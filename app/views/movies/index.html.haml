@@ -4,7 +4,7 @@
 %table#movies
   %thead
     %tr
-      %th{:class => (@sort_by == 'title') ? .hilite : ""}
+      %th{:class => (@sort_by == 'title') ? "hilite" : ""}
         %a#title_header= link_to "Movie Title", movie_path, :sort_by => "title"
       %th Rating
       %th Release Date
