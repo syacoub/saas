@@ -7,8 +7,11 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = (@sort_by = params[:sort_by]) ? Movie.find(:all, :order => @sort_by) : Movie.all
+    @checked_boxes = params[:ratings] ? params[:ratings].keys : nil
+    @sort_by = params[:sort_by]
     @all_ratings = Movie.all_ratings
+    @movies = Movie.find(:all, :order => @sort_by ? @sort_by : nil)
+ 
   end
 
   def new
