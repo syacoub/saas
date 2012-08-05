@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    if ( (!params[:sort_by] && !session[sort_by]) || (!params[:ratings] && !session[:ratings]) )
+    if ( (!params[:sort_by] && !session[:sort_by]) || (!params[:ratings] && !session[:ratings]) )
       sort_by = params[:sort_by] ? session[:sort_by] = params[:sort_by] : session[:sort_by]
       ratings = params[:ratings] ? session[:ratings] = params[:ratings] : session[:ratings]
       flash.keep
