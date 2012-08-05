@@ -7,10 +7,10 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @checked_boxes = params[:ratings] ? params[:ratings].keys : nil
+    @included_ratings = params[:ratings] ? params[:ratings].keys : nil
     @sort_by = params[:sort_by]
     @all_ratings = Movie.all_ratings
-    @movies = Movie.find(:all, :order => @sort_by ? @sort_by : nil)
+    @movies = @included_ratings ? Movie.where(["rating IN (?)", @included_ratings]).find(:all, :order => @sort_by ? @sort_by : nil) : []
  
   end
 
